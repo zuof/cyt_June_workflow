@@ -1,0 +1,40 @@
+---
+title: "Fei's workflow"
+output: html_notebook
+---
+
+
+
+```{r setup}
+library(readr)
+library(ggplot2)
+library(plotly)
+```
+
+Data
+
+```{r}
+#library(readr)
+adae <- read_csv("https://rhoinc.github.io/data-library/data/clinical-trials/adam/adae.csv")
+View(adae)
+
+```
+
+
+Data viz
+
+```{r}
+p <- ggplot(adae) +
+  aes(x = AESER, fill = SEX, weight = AGE) +
+  geom_bar() +
+  scale_fill_hue(direction = 1) +
+  theme_minimal()
+
+
+```
+
+Plotly
+
+```{r}
+ggplotly(p)
+```
